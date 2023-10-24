@@ -10,8 +10,7 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 @ToString @EqualsAndHashCode
 @Table(name = "series")
-public class Series {
-
+public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,8 +19,10 @@ public class Series {
     private String description;
     @Column(name = "image", nullable = false)
     private String image;
+    @ElementCollection
+    private List<String> gender = new ArrayList<String>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name="chapters_series", joinColumns = @JoinColumn(name = "serie_id"),
             inverseJoinColumns = @JoinColumn(name = "chapter_id"))
-    private List<Chapters> chapters = new ArrayList<Chapters>();
+    private List<Chapter> chapters = new ArrayList<Chapter>();
 }

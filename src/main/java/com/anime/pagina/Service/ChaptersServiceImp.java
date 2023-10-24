@@ -1,6 +1,6 @@
 package com.anime.pagina.Service;
 
-import com.anime.pagina.Entities.Chapters;
+import com.anime.pagina.Entities.Chapter;
 import com.anime.pagina.Repository.ChaptersRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,34 +16,34 @@ public class ChaptersServiceImp implements ChaptersService {
     }
 
     @Override
-    public List<Chapters> findAllChapters() {
+    public List<Chapter> findAllChapters() {
         return chaptersRepository.findAll();
     }
 
     @Override
-    public Chapters findChaptersById(Long id) {
-        Optional<Chapters> optionalChapters = chaptersRepository.findById(id);
+    public Chapter findChapterById(Long id) {
+        Optional<Chapter> optionalChapters = chaptersRepository.findById(id);
         return optionalChapters.orElse(null);
     }
 
     @Override
-    public Chapters createChapters(Chapters chapters) {
-        return chaptersRepository.save(chapters);
+    public Chapter createChapter(Chapter chapter) {
+        return chaptersRepository.save(chapter);
     }
 
     @Override
-    public Chapters updateChapters(Chapters chapters, Long id) {
-        Optional<Chapters> optionalChapters = chaptersRepository.findById(id);
+    public Chapter updateChapter(Chapter chapter, Long id) {
+        Optional<Chapter> optionalChapters = chaptersRepository.findById(id);
         if (optionalChapters.isPresent()) {
-            chapters.setId(id);
-            return chaptersRepository.save(chapters);
+            chapter.setId(id);
+            return chaptersRepository.save(chapter);
         }
         return null;
     }
 
     @Override
-    public Chapters deleteChapters(Long id) {
-        Optional<Chapters> optionalChapters = chaptersRepository.findById(id);
+    public Chapter deleteChapter(Long id) {
+        Optional<Chapter> optionalChapters = chaptersRepository.findById(id);
         if (optionalChapters.isPresent()) {
             chaptersRepository.deleteById(id);
             return optionalChapters.get();

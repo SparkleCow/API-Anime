@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @AllArgsConstructor @NoArgsConstructor
 @ToString @EqualsAndHashCode
 @Table(name = "chapters")
-public class Chapters {
+public class Chapter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,13 @@ public class Chapters {
     @Column(name = "video_players")
     @ElementCollection
     private List<String> videoPlayers = new ArrayList<String>();
+
+    public Chapter(String title, String serieTitle, List<String> videoPlayers) {
+        this.title = title;
+        this.serieTitle = serieTitle;
+        this.videoPlayers = videoPlayers;
+        this.views = 0;
+    }
 
     public void viewCount(){
         this.views++;
